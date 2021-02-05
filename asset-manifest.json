@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/adwpenalva/chessleague/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/adwpenalva/chessleague/static/js/main.164ca92b.chunk.js",
+    "main.js.map": "/adwpenalva/chessleague/static/js/main.164ca92b.chunk.js.map",
+    "runtime-main.js": "/adwpenalva/chessleague/static/js/runtime-main.3ca8db38.js",
+    "runtime-main.js.map": "/adwpenalva/chessleague/static/js/runtime-main.3ca8db38.js.map",
+    "static/js/2.eded6c22.chunk.js": "/adwpenalva/chessleague/static/js/2.eded6c22.chunk.js",
+    "static/js/2.eded6c22.chunk.js.map": "/adwpenalva/chessleague/static/js/2.eded6c22.chunk.js.map",
+    "static/js/3.9a15bb28.chunk.js": "/adwpenalva/chessleague/static/js/3.9a15bb28.chunk.js",
+    "static/js/3.9a15bb28.chunk.js.map": "/adwpenalva/chessleague/static/js/3.9a15bb28.chunk.js.map",
+    "index.html": "/adwpenalva/chessleague/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/adwpenalva/chessleague/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.eded6c22.chunk.js.LICENSE.txt": "/adwpenalva/chessleague/static/js/2.eded6c22.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/adwpenalva/chessleague/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3ca8db38.js",
+    "static/js/2.eded6c22.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.164ca92b.chunk.js"
+  ]
+}
