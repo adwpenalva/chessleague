@@ -1,0 +1,17 @@
+.navbar {
+    background-color: var(--primary-black);
+    position: fixed;
+    z-index: 1000;
+    width: 100vw;
+    height: 8vh;
+    justify-content: flex-start;
+}
+.nav-link {
+    text-transform: uppercase;
+    color: var(--text-primary);
+    transition: all 0.7s ease;
+}
+.nav-link:hover {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
