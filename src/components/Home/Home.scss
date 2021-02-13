@@ -3,7 +3,7 @@
     padding: var(--default-component-padding);
   }
   .Home-logo {
-    width: 50vw;
+    width: 35vw;
     pointer-events: none;
   }
   @media (prefers-reduced-motion: no-preference) {
@@ -19,6 +19,7 @@
     justify-content: start;
     font-size: calc(10px + 2vmin);
     color: white;
+    padding: 2%;
   }
   
   .Home-link {
