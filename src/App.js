@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home'
 import League from './components/League/League'
+import Profile from './components/Profile/Profile'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home}  />
         <Route path="/league" component={League} />
+        <Route path="/profile" component={Profile} />
         {/* <Route path="/add-country" component={AddCountry} /> */}
         {/* <Route path="/signup" component={Signup} /> */}
         {/* <Route path="/login" component={Login} /> */}

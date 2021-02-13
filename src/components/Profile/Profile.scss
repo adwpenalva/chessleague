@@ -1,0 +1,8 @@
+.title {
+    padding: var(--default-component-padding);
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+    align-items: center;
+    justify-content: space-between;
+}
