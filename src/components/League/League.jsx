@@ -41,7 +41,7 @@ export default class League extends Component {
         let gameId = urlArray[url.split('/').length-1]
         let lichessUrl = url.slice(0, url.length - gameId.length)
         for (let validUrl of validBaseUrls) {
-            if ( lichessUrl === validUrl && gameId.length === 12) {
+            if (lichessUrl === validUrl && (gameId.length === 8 || gameId.length === 12)) {
                 return true
             }  
         }

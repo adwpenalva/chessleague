@@ -5,8 +5,8 @@ import axios from "axios"
 const service = axios.create({
     baseURL:
       process.env.ENVIROMENT === "production"
-        ? "/api"
-        : `http://${window.location.hostname}:5000/api`,
+        ? ""
+        : `http://${window.location.hostname}:5000`,
   
     withCredentials: true,
   });
@@ -33,9 +33,9 @@ const service = axios.create({
   },
 
   getGameData(id) {
-      console.log("id in service file =>",id);
+      console.log("id in service file =>", id);
     return service
-      .get("/game" + id)
+      .get(`/game?url=${id}`)
       .then(res => res.data)
       .catch(errHandler)
   },
