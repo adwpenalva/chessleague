@@ -1,6 +1,6 @@
 import React from 'react'
 import './Home.scss';
-import logo from '../../tesaopia.png';
+import logo from '../../midia/ACL_Art_FULL.svg';
 
 
 export default function Home(props) {

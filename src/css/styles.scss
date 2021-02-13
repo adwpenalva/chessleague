@@ -1,6 +1,9 @@
 :root {
     --primary-black: #282c34;
     --primary-white: #ffffff;
+    --light-grey: #9b9b9b;
+    --mid-grey: #7b7b7b;
+    --dark-grey: #5b5b5b;
     --default-component-padding: 4em 2em 1em 2em;
     --container-shadow: 0px -1px 9px 0px rgba(0,0,0,0.75);
     --text-primary: #ffffff;
@@ -10,7 +13,7 @@
 
 /* DEFAULT RESETS */
 html, body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Open Sans", 'Roboto', sans-serif;
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
     color: var(--primary-white);
@@ -25,9 +28,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
     padding: 0.5em 1em;
     border-radius: 6px;
 }
-.primary-btn:hover {
+.primary-btn:not(:disabled):hover {
     background-color: var(--primary-white);
     color: var(--primary-button-bg);
+}
+.primary-btn:disabled{
+    background-color: var(--primary-white);
+    color: var(--light-grey);
+}
+.primary-btn:disabled:hover {
+    cursor: not-allowed;
 }
 .primary-text {
     color: var(--primary-white);

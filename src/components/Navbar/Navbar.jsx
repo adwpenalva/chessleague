@@ -1,4 +1,4 @@
-import logo from '../../tesaopia.png';
+import logo from './../../midia/ACL_Art_FULL.svg';
 // import './css/styles.scss'
 import './Navbar.scss';
 import { Link, NavLink as NLink } from "react-router-dom"
