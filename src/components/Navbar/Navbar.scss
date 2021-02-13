@@ -11,7 +11,30 @@
     color: var(--text-primary);
     transition: all 0.7s ease;
 }
+.nav-profile {
+    @extend .nav-link;
+    margin-left: auto;
+    text-transform: none;
+}
+.nav-profile:hover{
+    font-size: 1.1rem;
+    transition: all 0.7s ease;
+    img {
+        transition: all 0.7s ease;
+        height: 35;
+        width: 35;
+    }
+}
 .nav-link:hover {
     font-size: 1.1rem;
     color: var(--text-primary);
+}
+
+.profileName {
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+
+.round {
+    border-radius: 50%;
 }

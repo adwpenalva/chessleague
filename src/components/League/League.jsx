@@ -23,6 +23,7 @@ export default class League extends Component {
         const isValid = this.validateUrl(this.state.gameUrl)
 
         if (isValid) {
+            console.log('ISVALID')
             api.getGameData(this.state.gameUrl)
             .then(data => {
                 console.log("success", data)
