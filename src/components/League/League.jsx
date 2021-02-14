@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import './League.scss';
 import api from "../../services/api";
+import LeagueTable from '../LeagueTable/LeagueTable'
 export default class League extends Component {
     constructor(props) {
         super(props);
     
         this.state = {
-            gameUrl: ""
+            gameUrl: "",
+            data: null
         }
       };
 
@@ -14,6 +16,8 @@ export default class League extends Component {
         this.setState({
             ...this.state,
             [e.target.name]: e.target.value,
+            dataLoaded: false,
+
           })
     };
 
@@ -26,7 +30,12 @@ export default class League extends Component {
             console.log('ISVALID')
             api.getGameData(this.state.gameUrl)
             .then(data => {
-                console.log("success", data)
+                this.setState({
+                    ...this.state,
+                    dataLoaded: true,
+                    data: data,
+                  })
+                console.log("success", this.state.data);
             })
             .catch(error => {
                 console.error(error)
@@ -59,6 +68,8 @@ export default class League extends Component {
                     <input className="form-control" type="text" value={this.state.gameUrl} name="gameUrl" onChange={this.handleInputChange} placeholder="Insert URL here..."/>
                     <button disabled={!this.validateUrl(this.state.gameUrl)} className="btn primary-btn" onClick={e => this.handleClick(e)}>Submit</button>
                 </form>
+
+                    <LeagueTable data={this.state.data}/>
             </div>
         )
     }

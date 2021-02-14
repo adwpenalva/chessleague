@@ -13,10 +13,7 @@ function App() {
         <Route path="/" exact component={Home}  />
         <Route path="/league" component={League} />
         <Route path="/profile" component={Profile} />
-        {/* <Route path="/add-country" component={AddCountry} /> */}
-        {/* <Route path="/signup" component={Signup} /> */}
-        {/* <Route path="/login" component={Login} /> */}
-        {/* <Route path="/secret" component={Secret} /> */}
+    
         <Route render={() => <h2>404</h2>} />
       </Switch>
      

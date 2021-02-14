@@ -1,0 +1,20 @@
+
+.LeagueTable {
+
+    .table {
+        background-color:  var(--primary-white);
+        // background-color: #667788;
+        border-radius: 3px;
+        min-width: 60vw;
+    }
+    .table th {
+        border-radius: 3px;
+        border-top: 1px solid rgb(0 0 0 / 8%);
+    }
+    .table thead {
+      color: var(--primary-black);
+      font-weight: bold;  
+      text-transform: uppercase;
+    }
+
+}

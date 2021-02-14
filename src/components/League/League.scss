@@ -5,14 +5,13 @@
     min-height: 50vh;
     align-items: center;
     justify-content: space-between;
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 15vh;
+        min-width: 60vw;
+    }
   }
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 15vh;
-
-    width: 50vw;
-}
   

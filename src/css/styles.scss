@@ -28,11 +28,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
     padding: 0.5em 1em;
     border-radius: 6px;
 }
+.form-control:focus,
+.primary-btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
 .primary-btn:not(:disabled):hover {
     background-color: var(--primary-white);
-    color: var(--primary-button-bg);
+    // color: var(--primary-button-bg);
 }
-.primary-btn:disabled{
+.primary-btn:disabled {
     background-color: var(--primary-white);
     color: var(--light-grey);
 }
