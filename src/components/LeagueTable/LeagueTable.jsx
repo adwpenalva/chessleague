@@ -9,24 +9,32 @@ export default class LeagueTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            rankingActive: false,
-            fixtureActive: true,
+            rankingActive: true,
+            fixtureActive: false,
             ranking: null,
+            dataLoaded: false
+
         };
       };
       componentDidMount() {
-          this.getLeagueRanking();
+          this.getData();
       }
 
-      getLeagueRanking()  {
-        api.getLeagueRanking()
+      getData() {
+          Promise.all([api.getLeagueRanking(), api.getLeagueFixtures])
             .then(result => {
-            console.log("LeagueTable ~ getLeagueRanking ~ result", result);
+                this.setState({
+                    ...this.state,
+                    ranking: result[0],
+                    // fixtures: result[1],
+                    dataLoaded: true
+                });
+                console.log("ranking", this.state.ranking)
             })
             .catch(error => {
-                console.error(error);
-            });
-      };
+                console.error(error)
+            })
+      }
 
       handleRankingSelect = (e) => {
         this.setState({
@@ -60,11 +68,15 @@ export default class LeagueTable extends Component {
                             />
                   </thead>
                   <tbody>
+                      {this.state.dataLoaded && 
                         <LeagueTableRows 
-                            game={this.props.data} 
-                            showRaking={this.state.rankingActive}
-                            showFixtures={this.state.fixtureActive}
-                            />
+                        game={this.props.data} 
+                        ranking={this.state.ranking}
+                        fixtures={this.state.fixtures}
+                        showRaking={this.state.rankingActive}
+                        showFixtures={this.state.fixtureActive}
+                        />
+                    }
                   </tbody>
                 </table>
             </div>

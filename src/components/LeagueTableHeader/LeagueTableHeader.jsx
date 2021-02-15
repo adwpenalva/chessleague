@@ -8,9 +8,10 @@ export default function LeagueTableHeader(props) {
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
                   <th scope="col">Wins</th>
+                  <th scope="col">Draws</th>
                   <th scope="col">Losses</th>
-                  <th scope="col">Aelo</th>
                   <th scope="col">Games</th>
+                  <th scope="col">Aelo</th>
               </tr>
             }
             {props.showFixtures &&  

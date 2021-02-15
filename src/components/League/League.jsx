@@ -16,8 +16,6 @@ export default class League extends Component {
         this.setState({
             ...this.state,
             [e.target.name]: e.target.value,
-            dataLoaded: false,
-
           })
     };
 
@@ -32,10 +30,8 @@ export default class League extends Component {
             .then(data => {
                 this.setState({
                     ...this.state,
-                    dataLoaded: true,
                     data: data,
                   })
-                console.log("success", this.state.data);
             })
             .catch(error => {
                 console.error(error)

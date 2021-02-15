@@ -6,7 +6,7 @@ import profilePic from './../Profile/zyzz.jpg'
 
 function Navbar() {
   return (
-    <div className="Navbar">
+    <div className="Nav">
         <nav className="navbar container-shadow">
             <Link to="/"className="navbar-brand primary-text">
                 <img src={logo} width="30" height="30" className="d-inline-block align-top" alt="" />
@@ -18,8 +18,9 @@ function Navbar() {
                   </li>
                 </ul>
 
-            <Link to="/profile" className="nav-profile mt-1">
-              <img src={profilePic} width="30" height="30" className="d-inline-block align-top round mr-2" alt="user profile"></img><span className="profileName">Penny Penalva</span></Link>
+            <Link to="/profile" className="nav-profile">
+              <img src={profilePic} width="30" height="30" className="d-inline-block align-top round" alt="user profile"></img><span className="profileName">Penny Penalva</span>
+              </Link>
         </nav>
     </div>
   );

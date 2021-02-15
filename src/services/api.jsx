@@ -33,7 +33,6 @@ const service = axios.create({
   },
 
   getGameData(id) {
-    console.log("id in service file =>", id);
     return service
       .get(`/game?url=${id}`)
       .then(res => res.data)
@@ -46,6 +45,14 @@ const service = axios.create({
       .then(res => res.data)
       .catch(errHandler)
   },
+  getLeagueFixtures() {
+    /* Eventually we could have League Id, for now NO parameter */
+  return service
+    .get(`/fixtures`)
+    .then(res => res.data)
+    .catch(errHandler)
+},
+
 
   }
 
