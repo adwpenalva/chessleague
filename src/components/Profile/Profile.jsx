@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Profile.scss';
-import profilePic from './zyzz.jpg'
+import profilePic from './zyzz.jpg';
 
 export default class Profile extends Component {
     constructor(props) {
@@ -19,6 +19,8 @@ export default class Profile extends Component {
     //     })
     // }
 
+    
+
     render() {
         return (
             <div className="title">
@@ -27,6 +29,7 @@ export default class Profile extends Component {
                 <span>Lichess Rating: <b>{this.state.lichessRating}</b></span>
                 <span>Honors:</span>
             </div>
+            
         )
     }
 }
