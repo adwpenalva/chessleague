@@ -9,10 +9,11 @@ export default class LeagueTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            rankingActive: true,
-            fixtureActive: false,
-            ranking: null,
-            dataLoaded: false
+            rankingActive:  true,
+            fixtureActive:  false,
+            ranking:        null,
+            dataLoaded:     false,
+            showModal:      false
 
         };
       };
@@ -20,16 +21,17 @@ export default class LeagueTable extends Component {
           this.getData();
       }
 
+
       getData() {
-          Promise.all([api.getLeagueRanking(), api.getLeagueFixtures])
+          Promise.all([api.getLeagueRanking(), api.getLeagueFixtures()])
             .then(result => {
                 this.setState({
                     ...this.state,
-                    ranking: result[0],
-                    // fixtures: result[1],
+                    ranking:    result[0],
+                    fixtures:   result[1],
                     dataLoaded: true
                 });
-                console.log("ranking", this.state.ranking)
+                console.log("data loaded", this.state)
             })
             .catch(error => {
                 console.error(error)
@@ -42,7 +44,6 @@ export default class LeagueTable extends Component {
             rankingActive: true,
             fixtureActive: false
           });
-          console.log(this.state);
     };
     handleFixturesSelect = (e) => {
         this.setState({
@@ -70,7 +71,7 @@ export default class LeagueTable extends Component {
                   <tbody>
                       {this.state.dataLoaded && 
                         <LeagueTableRows 
-                        game={this.props.data} 
+                        openModal={this.openModal}
                         ranking={this.state.ranking}
                         fixtures={this.state.fixtures}
                         showRaking={this.state.rankingActive}
@@ -79,6 +80,7 @@ export default class LeagueTable extends Component {
                     }
                   </tbody>
                 </table>
+            
             </div>
         )
     }

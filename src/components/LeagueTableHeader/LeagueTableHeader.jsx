@@ -15,12 +15,12 @@ export default function LeagueTableHeader(props) {
               </tr>
             }
             {props.showFixtures &&  
-                  <tr>
+                <tr>
                   <th scope="col">#</th>
                   <th scope="col">Whites</th>
                   <th scope="col">Blacks</th>
-                  <th scope="col">Speed</th>
-                  <th scope="col">Winner</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Result</th>
               </tr>
             }
   

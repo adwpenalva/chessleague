@@ -7,6 +7,7 @@
     --default-component-padding: 4em 2em 1em 2em;
     --container-shadow: 0px -1px 9px 0px rgba(0,0,0,0.75);
     --text-primary: #ffffff;
+    --text-secondary: #282c34;
     --primary-button-bg: rgb(20, 20, 20)
 }
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
@@ -23,7 +24,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
 .primary-btn {
     background-color: var(--primary-button-bg);
     color: var(--text-primary);
-    box-shadow: var(--container-shadow);
+    // box-shadow: var(--container-shadow);
     transition: all 0.5s ease-in-out;
     padding: 0.5em 1em;
     border-radius: 6px;
