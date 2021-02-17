@@ -17,6 +17,11 @@ function Login() {
             <GoogleLogin
                 clientId={clientId}
                 buttonText="Login"
+                render={renderProps => (
+                    <button className="test" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                        Login MFER
+                    </button>
+                )}
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy={'single_host_origin'}
