@@ -4,8 +4,11 @@ import axios from "axios"
 
 const service = axios.create({
     baseURL:`https://lichess.org`,
-  });
-
+    headers:  {
+            "Accept": "application/json" 
+          }
+    }
+  );
 
   const errHandler = err => {
     console.error(err)
@@ -22,7 +25,7 @@ const service = axios.create({
       getGameData(id) {
         return service
         .get(`/game/export/${id}`)
-        .then(res => res.data)
+        .then(res => res)
         .catch(errHandler)
   }
 }

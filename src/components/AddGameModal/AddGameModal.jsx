@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import lichessApi from "../../services/lichessApi";
 import api from "../../services/api";
 import './AddGameModal.scss';
 import FontAwesome from 'react-fontawesome';
@@ -9,7 +10,11 @@ export default class AddGameModal extends Component {
         this.state = {
             gameUrl: "",
             gameInfoLoaded: false,
-            confirmationMessage: null
+            confirmationMessage: null,
+            errorMessage: null,
+            lichessGameData: null,
+            showSuccess: false,
+            showModal: false
         };
       };
       handleInputChange = (e) => {
@@ -18,22 +23,7 @@ export default class AddGameModal extends Component {
             [e.target.name]: e.target.value,
           })
     };
-     closeicon = () => (
-        <FontAwesome
-        name="times"
-        onClick={e => this.closeModal()}
-        style={{
-          color: '#000000',
-          padding: '10px',
-          cursor: 'pointer',
-          backgroundColor: 'transparent',
-          border: 0,
-          position: 'absolute',
-          top: '0.3rem',
-          right: '0.5rem',
-        }}
-        />
-      );
+
 
       openModal = (e) => {
           this.setState({
@@ -60,23 +50,29 @@ export default class AddGameModal extends Component {
             if (lichessUrl === validUrl && (gameId.length === 8 || gameId.length === 12)) {
                 isValid = true;
             }  
-
-
         }
         if(isValid) {
-            api.getGameData(gameId)
+            lichessApi.getGameData(gameId)
                 .then(result => {
-                    console.log("gameId", gameId)
-                    console.log("api result =>", result)
+                    let gameFromUrlData = result.data;
+                    let selectedFixtureGame = this.props.game;
+                    let errorMessage = "";
+                    if(gameFromUrlData.players.black.user.id !== selectedFixtureGame.black ||
+                       gameFromUrlData.players.white.user.id !== selectedFixtureGame.white ) {
+                           errorMessage = 
+                           `The game you are trying to add is not between ${selectedFixtureGame.white} and ${selectedFixtureGame.black}, please check the link you are submitting again, imbecil.`
+                       }
                     let confirmationMessage = {
-                        white: result.players.white.user.id,
-                        black: result.players.black.user.id,
-                        result: result.winner,
-                        date: new Date(result.createdAt).getDate() + "/" + new Date(result.createdAt).toLocaleString('default', { month: 'long' })
+                        white: gameFromUrlData.players.white.user.id,
+                        black: gameFromUrlData.players.black.user.id,
+                        result: gameFromUrlData.winner,
+                        date: new Date(gameFromUrlData.createdAt).getDate() + "/" + new Date(gameFromUrlData.createdAt).toLocaleString('default', { month: 'long' })
                     }
                     this.setState({
                         ...this.state,
+                        lichessGameData: gameFromUrlData,
                         confirmationMessage:confirmationMessage,
+                        errorMessage: errorMessage
                     })
                 })
                 .catch(error => {
@@ -85,35 +81,91 @@ export default class AddGameModal extends Component {
         }
     }
 
+    handleSubmit = (e) => {
+        api.addNewGame({
+            fixture_id: this.props.game.id,
+            data: this.state.lichessGameData
+        }).then(result => {
+                this.setState({
+                ...this.state,
+                showSuccess: true,
+                showModal: false
+           })
+             setTimeout(() => {
+                this.closeSuccessMessage();
+           }, 3000);
+         
+            })
+    }
+
+      showSuccessMessage = (e) => {
+          this.setState({
+              ...this.state,
+            showSuccess: true
+          })
+      }
+      closeSuccessMessage = (e) => {
+          this.setState({
+              ...this.state,
+            showSuccess: false
+          })
+      }
+    
     render() {
         return (
-            <React.Fragment>
-        <button className="primary-btn" onClick={e => this.openModal(e)}>Add Game</button>
-        {this.state.showModal &&
-        <div className="overlay">
-        <div className="content">
-             { this.closeicon() }
-            {this.state.confirmationMessage ? <div><p>Please confirm the information below </p>
-                <p>White: {this.state.confirmationMessage.white}</p>
-                <p>Black: {this.state.confirmationMessage.black}</p>
-                <p>Result: {this.state.confirmationMessage.result}</p>
-                <p>Date: {this.state.confirmationMessage.date}</p>
+        <React.Fragment>
+            <button className="btn primary-btn outline-btn" value={this.props.game} onClick={e => this.openModal(e)}>Add Game</button>
+            {this.state.showModal &&
+            <div className="overlay">
+                <div className="content">
+                    <h4>Add the URL matching the selected fixture</h4>
+                     {this.state.errorMessage && 
+                     <div>
+                        <p className="error-message">{this.state.errorMessage}</p>
+                        <input className="form-control" 
+                         type="text" value={this.state.gameUrl} 
+                         name="gameUrl"
+                         onChange={this.handleInputChange} 
+                         placeholder="Insert URL here..."
+                         />
+                         </div>}
+                    {this.state.confirmationMessage ? 
+                    <div>
+                        <p>Please confirm the game you are want the game you selected matches the information below</p>
+                        <p>White: {this.state.confirmationMessage.white}</p>
+                        <p>Black: {this.state.confirmationMessage.black}</p>
+                        <p>Result: {this.state.confirmationMessage.result}</p>
+                        <p>Date: {this.state.confirmationMessage.date}</p>
+                    </div>
+                    :
+                     <input className="form-control" 
+                     type="text" 
+                     value={this.state.gameUrl} 
+                     name="gameUrl"
+                     onChange={this.handleInputChange} 
+                     placeholder="Insert URL here..."
+                     />
+                }
+                <div className="modal-footer justify-content-between">
+                    <button className="btn primary-btn  outline-btn" onClick={e => this.closeModal(e)}>Close</button>
+                    {this.state.confirmationMessage ? 
+                    <button className="btn primary-btn outline-btn" onClick={e => this.handleSubmit(e)}>Submit Game</button>
+                    :
+                    <button className="btn primary-btn outline-btn"
+                     onClick={e => this.handleClick(e)}>Confirm</button>
+                    }
                 </div>
-            :
-             <input className="form-control" 
-             type="text" value={this.state.gameUrl} 
-             name="gameUrl"
-             onChange={this.handleInputChange} 
-             placeholder="Insert URL here..."
-             />
-            }
 
-            <button className="btn primary-btn" onClick={e => this.handleClick(e)}>Confirm</button>
-
+                </div>
             </div>
-        </div>
             }
-
+            {this.state.showSuccess && 
+                <div className="overlay">
+                    <div className="success-container">
+                        <p> boa champz! Your game was submitted successfully! </p>
+                    </div>
+                </div>
+            }
 
             </React.Fragment>
 

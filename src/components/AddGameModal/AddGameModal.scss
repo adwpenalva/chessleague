@@ -14,18 +14,57 @@
     bottom: 0;
     background-color: rgba(0,0,0,0.5); 
     z-index: 999; 
-    cursor: pointer;
   }
 
   .content {
-    margin: 15% auto;
+    margin: 10% auto;
     background-color: white;
     border-radius: 0.25rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 40vh;
     width: 50vw;
     padding: 2rem;
     position: relative;
-  }
-  .content p {
-    color: var(--primary-text);
+    transition: all 0.3s ease-in-out;
     
+    h4,p {
+      color: var(--primary-text);
+    } 
+    .error-message {
+      color: red
+    }
+    .modal-footer {
+      border: none;
+    }
+    
+    -webkit-animation: fadein 0.3s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 0.3s; /* Firefox < 16 */
+        -ms-animation: fadein 0.3s; /* Internet Explorer */
+         -o-animation: fadein 0.3s; /* Opera < 12.1 */
+            animation: fadein 0.3s;
 }
+
+.success-container {
+  p {
+    color: var(--primary-text);
+  }
+  -webkit-animation: fadein 0.3s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 0.3s; /* Firefox < 16 */
+        -ms-animation: fadein 0.3s; /* Internet Explorer */
+         -o-animation: fadein 0.3s; /* Opera < 12.1 */
+            animation: fadein 0.3s;
+      margin: 10% auto;
+    background-color: #CFEFE0;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 30vw;
+    
+    padding: 2rem;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+    

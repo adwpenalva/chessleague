@@ -32,9 +32,10 @@ const service = axios.create({
       .catch(errHandler)
   },
 
-  getGameData(id) {
+  addNewGame(data) {
+    console.log("data on service", data)
     return service
-      .get(`/game?url=${id}`)
+      .post("/game", data)
       .then(res => res.data)
       .catch(errHandler)
   },

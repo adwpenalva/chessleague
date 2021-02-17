@@ -2,19 +2,27 @@
 .LeagueTable {
 
     .table {
-        background-color:  var(--primary-white);
+        background-color:  var(--secondary);
         // background-color: #667788;
         border-radius: 3px;
         min-width: 60vw;
     }
-    .table th {
-        border-radius: 3px;
-        border-top: 1px solid rgb(0 0 0 / 8%);
+    .table thead tr {
+        border-bottom: 1px solid rgb(0 0 0 / 8%);
+    }
+    .table th, .table td {
+        border: 0
     }
     .table thead {
-      color: var(--primary-black);
+      color: var(--primary);
       font-weight: bold;  
       text-transform: uppercase;
+    }
+    .table tr:nth-child(even) {
+        background-color: var(--primary-gray);
+    }
+    .table th, .table td {
+        vertical-align: 0;
     }
 
 }

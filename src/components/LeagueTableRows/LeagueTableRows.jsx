@@ -27,12 +27,12 @@ export default class LeagueTableRows extends Component {
                         return(
                             <tr key={index}>
                                 <th scope="col">{index + 1}</th>
-                                <th scope="col">{item.id}</th>
-                                <th scope="col">{item.wins}</th>
-                                <th scope="col">{item.draws}</th>
-                                <th scope="col">{item.losses}</th>
-                                <th scope="col">{item.games_played} / {item.games_required}</th>
-                                <th scope="col">{item.aelo}</th>
+                                <td scope="col">{item.id}</td>
+                                <td scope="col">{item.wins}</td>
+                                <td scope="col">{item.draws}</td>
+                                <td scope="col">{item.losses}</td>
+                                <td scope="col">{item.games_played} / {item.games_required}</td>
+                                <td scope="col">{item.aelo}</td>
                             </tr>
                             )
                     })
@@ -49,7 +49,7 @@ export default class LeagueTableRows extends Component {
                                 {item.outcome ? 
                                     <td>{item.outcome}</td>
                                     :
-                                   <td><AddGameModal /></td>
+                                   <td><AddGameModal game={item} /></td>
                              
                                 }
                         </tr>

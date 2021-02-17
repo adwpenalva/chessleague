@@ -3,6 +3,9 @@ import './LeagueTable.scss';
 import LeagueTableHeader from '../LeagueTableHeader/LeagueTableHeader';
 import LeagueTableRows from '../LeagueTableRows/LeagueTableRows';
 import api from "../../services/api";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
 
 
 export default class LeagueTable extends Component {
@@ -58,8 +61,10 @@ export default class LeagueTable extends Component {
         return (
             <div className="LeagueTable">
                 <div className="d-flex justify-content-around w-100 pb-3">
-                    <button className="btn primary-btn" onClick={this.handleRankingSelect}> Ranking</button>
-                    <button className="btn primary-btn" onClick={this.handleFixturesSelect}> Fixtures</button>
+                    <button className="btn primary-btn" onClick={this.handleRankingSelect}>
+              Ranking</button>
+                    <button className="btn primary-btn" onClick={this.handleFixturesSelect}> 
+                 Fixtures</button>
                 </div>
                 <table className="table">
                   <thead>
