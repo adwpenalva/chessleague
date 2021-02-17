@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Profile.scss';
 import profilePic from './zyzz.jpg';
+import Login from './../Login/Login'
+import Logout from './../Logout/Logout'
 
 export default class Profile extends Component {
     constructor(props) {
@@ -8,7 +10,8 @@ export default class Profile extends Component {
 
         this.state = {
             playerName: "Penny Penalva",
-            lichessRating: 1130
+            lichessRating: 1130,
+            picUrl: ''
         }
     };
 
@@ -28,8 +31,9 @@ export default class Profile extends Component {
                 <img src={profilePic} alt="modern god"></img>
                 <span>Lichess Rating: <b>{this.state.lichessRating}</b></span>
                 <span>Honors:</span>
+                <Login />
+                <Logout />
             </div>
-            
         )
     }
 }
