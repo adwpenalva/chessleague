@@ -2,11 +2,24 @@ import logo from './../../midia/ACL_Art_FULL.svg';
 // import './css/styles.scss'
 import './Navbar.scss';
 import { Link, NavLink as NLink } from "react-router-dom"
-import profilePic from './../Profile/zyzz.jpg'
+import defaultPic from './../Profile/zyzz.jpg'
+import { Component } from 'react';
 
-function Navbar() {
-  return (
-    <div className="Nav">
+export default class Navbar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+    };
+  };
+
+  render () {
+
+    console.log('navbar', this.props.props.profileObj)
+
+    return(
+      <div className="Nav">
         <nav className="navbar container-shadow">
             <Link to="/"className="navbar-brand primary-text">
                 <img src={logo} width="30" height="30" className="d-inline-block align-top" alt="" />
@@ -19,11 +32,10 @@ function Navbar() {
                 </ul>
 
             <Link to="/profile" className="nav-profile">
-              <img src={profilePic} width="30" height="30" className="d-inline-block align-top round" alt="user profile"></img><span className="profileName">Penny Penalva</span>
+              <img src={this.props.props.profileObj ? this.props.props.profileObj.imageUrl : defaultPic}  width="30" height="30" className="d-inline-block align-top round mr-2" alt="user profile"></img><span className="profileName">{this.props.props.profileObj ? this.props.props.profileObj.name : 'Login'}</span>
               </Link>
         </nav>
     </div>
-  );
+    )
+  }
 }
-
-export default Navbar;

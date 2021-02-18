@@ -27,10 +27,10 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar name="ACL"/>
+        <Navbar name="ACL" props={this.state.userData}/>
         <Switch>
           <Route path="/" exact component={Home}  />
-          <Route path="/league" component={League} />
+          <Route path="/league" component={League} props={this.state.userData} />
           <Route path="/profile" render={(props) => <Placeholder {...props} sendInfo={this.sendUserInfoFromProfile}/>}/>
           <Route render={() => <h2>404</h2>} />
         </Switch>
