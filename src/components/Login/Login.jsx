@@ -9,7 +9,7 @@ export default class Login extends Component {
     }
 
     onSuccess = (res) => {
-        this.props.sendUserInfoFromLogin(res)
+        this.props.updateUserData(res)
         console.log('[Login Success] currentUser:', res.profileObj);
     };
 
@@ -18,8 +18,10 @@ export default class Login extends Component {
     };
 
     render() {
+        console.log("clientId", clientId)
         return (
             <div>
+            {clientId && 
                 <GoogleLogin
                     clientId={clientId}
                     buttonText="Login"
@@ -29,6 +31,7 @@ export default class Login extends Component {
                     style={{ marginTop: '100px'}}
                     isSignedIn={true}
                 />
+            }
             </div>
         )
     }

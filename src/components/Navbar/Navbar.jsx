@@ -1,22 +1,20 @@
+import React, { Component } from 'react';
 import logo from './../../midia/ACL_Art_FULL.svg';
 // import './css/styles.scss'
 import './Navbar.scss';
 import { Link, NavLink as NLink } from "react-router-dom"
 import defaultPic from './../Profile/zyzz.jpg'
-import { Component } from 'react';
 
 export default class Navbar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
 
-    };
   };
 
   render () {
 
-    console.log('navbar', this.props.props.profileObj)
+    console.log('navbar => this.props.user', this.props.user)
 
     return(
       <div className="Nav">
@@ -32,7 +30,18 @@ export default class Navbar extends Component {
                 </ul>
 
             <Link to="/profile" className="nav-profile">
-              <img src={this.props.props.profileObj ? this.props.props.profileObj.imageUrl : defaultPic}  width="30" height="30" className="d-inline-block align-top round mr-2" alt="user profile"></img><span className="profileName">{this.props.props.profileObj ? this.props.props.profileObj.name : 'Login'}</span>
+            {this.props.user && 
+            <React.Fragment>
+              <img src={this.props.user.profileObj && this.props.user.profileObj.imageUrl}  width="30" height="30" className="d-inline-block align-top round mr-2" alt="user profile"></img>
+              <span className="profileName">{this.props.user.profileObj ? this.props.user.profileObj.name : 'Login'}</span>
+            </React.Fragment>
+            }
+            {!this.props.user &&
+              <React.Fragment>
+                <img src={defaultPic}  width="30" height="30" className="d-inline-block align-top round mr-2" alt="user profile"></img>
+                <span className="profileName">{ 'Login'}</span>
+              </React.Fragment>
+            }
               </Link>
         </nav>
     </div>

@@ -12,12 +12,13 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      userData: {},
+      userData: null,
       leagueData: null
     };
   };
 
   sendUserInfoFromProfile = (userData) => {
+    console.log("userData", userData)
     this.setState({
             ...this.state,
             userData: userData
@@ -36,11 +37,18 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar name="ACL" props={this.state.userData}/>
+        <Navbar name="ACL" user={this.state.userData}/>
         <Switch>
           <Route path="/" exact component={Home}  />
-          <Route path="/league"  render={(props) => <League {...props} updateLeagueData={this.updateLeagueData} leagueData={this.state.leagueData} user={this.state.user}/>} />
-          <Route path="/profile" render={(props) => <Profile {...props} sendInfo={this.sendUserInfoFromProfile}/>}/>
+          <Route path="/league"  render={(props) => 
+          <League {...props} 
+            updateLeagueData={this.updateLeagueData} 
+            leagueData={this.state.leagueData} 
+            user={this.state.userData}/>} />
+          <Route path="/profile" render={(props) => 
+          <Profile {...props}  
+          user={this.state.userData} 
+          updateUserData={this.sendUserInfoFromProfile}/>}/>
           <Route render={() => <h2>404</h2>} />
         </Switch>
       </div>

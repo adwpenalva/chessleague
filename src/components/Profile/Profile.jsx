@@ -8,30 +8,29 @@ export default class Profile extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            userData: {}
-        };
     };
-
-    sendUserInfoFromLogin = (res) => {
-        this.setState({
-            userData: res
-        }, () => {
-            this.props.sendInfo(this.state.userData);
-        })
-    }
 
 
     render() {
 
         return (
             <div className="title">
-                <h2 className="pt-1">{this.state.userData.profileObj ? this.state.userData.profileObj.name : 'MAMALDINHO'}</h2>
-                <img src={this.state.userData.profileObj ? this.state.userData.profileObj.imageUrl : zyzz} alt="modern god"></img>
-                <span><b>Email:</b>{this.state.userData.profileObj ? this.state.userData.profileObj.email : 'n tem'}</span>
-                <span>Honors:</span>
-                <Login sendUserInfoFromLogin={this.sendUserInfoFromLogin}/>
-                <Logout />
+            {this.props.user &&
+                <React.Fragment> 
+                    <h2 className="pt-1">{this.props.user.profileObj ? this.props.user.profileObj.name : 'MAMALDINHO'}</h2>
+                    <img src={this.props.user.profileObj ? this.props.user.profileObj.imageUrl : zyzz} alt="modern god"></img>
+                    <span><b>Email:</b>{this.props.user.profileObj ? this.props.user.profileObj.email : 'n tem'}</span>
+                    <span>Honors:</span>
+                    <Logout />
+                </React.Fragment>
+            }
+                {!this.props.user &&
+                <React.Fragment> 
+                <h2>Login</h2>
+                    <Login updateUserData={this.props.updateUserData}/>
+                </React.Fragment>
+
+            }
             </div>
         )
     }
