@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Profile.scss';
-import profilePic from './zyzz.jpg';
 import Login from './../Login/Login'
+import zyzz from './zyzz.jpg'
 import Logout from './../Logout/Logout'
 
 export default class Profile extends Component {
@@ -9,29 +9,28 @@ export default class Profile extends Component {
         super(props);
 
         this.state = {
-            playerName: "Penny Penalva",
-            lichessRating: 1130,
-            picUrl: ''
-        }
+            userData: {}
+        };
     };
 
-    // getUserInfo () {
-    //     this.setState({
-    //         ...this.state,
-    //         playerName: {playerName}
-    //     })
-    // }
+    sendUserInfoFromLogin = (res) => {
+        this.setState({
+            userData: res
+        }, () => {
+            this.props.sendInfo(this.state.userData);
+        })
+    }
 
-    
 
     render() {
+
         return (
             <div className="title">
-                <h2 className="pt-1">{this.state.playerName}</h2>
-                <img src={profilePic} alt="modern god"></img>
-                <span>Lichess Rating: <b>{this.state.lichessRating}</b></span>
+                <h2 className="pt-1">{this.state.userData.profileObj ? this.state.userData.profileObj.name : 'MAMALDINHO'}</h2>
+                <img src={this.state.userData.profileObj ? this.state.userData.profileObj.imageUrl : zyzz} alt="modern god"></img>
+                <span><b>Email:</b>{this.state.userData.profileObj ? this.state.userData.profileObj.email : 'n tem'}</span>
                 <span>Honors:</span>
-                <Login />
+                <Login sendUserInfoFromLogin={this.sendUserInfoFromLogin}/>
                 <Logout />
             </div>
         )
