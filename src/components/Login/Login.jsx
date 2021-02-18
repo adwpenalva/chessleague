@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
 
-const clientId = '852767129869-sus3k6jodceu2786j8iba3cge43n11fg.apps.googleusercontent.com';
+const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 export default class Login extends Component {
     constructor(props) {

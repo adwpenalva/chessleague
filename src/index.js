@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import './index.scss';
 import './css/styles.scss'
+import 'react-tabs/style/react-tabs.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

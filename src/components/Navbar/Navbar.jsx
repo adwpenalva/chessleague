@@ -21,7 +21,7 @@ export default class Navbar extends Component {
     return(
       <div className="Nav">
         <nav className="navbar container-shadow">
-            <Link to="/"className="navbar-brand primary-text">
+            <Link to="/"className="navbar-brand text_primary">
                 <img src={logo} width="30" height="30" className="d-inline-block align-top" alt="" />
             </Link>
 

@@ -4,7 +4,7 @@ import axios from "axios"
 
 const service = axios.create({
     baseURL:
-      process.env.ENVIROMENT === "production"
+      process.env.REACT_APP_ENVIROMENT === "production"
         ? ""
         : `http://${window.location.hostname}:5000`,
   

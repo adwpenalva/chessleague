@@ -1,11 +1,11 @@
 :root {
     --primary: #282c34;
     --secondary: #ffffff;
-    --primary-gray: #80808054;
+    --primary-gray: #d0d0d0;
     --light-grey: #9b9b9b;
     --mid-grey: #7b7b7b;
     --dark-grey: #5b5b5b;
-    --default-component-padding: 4em 2em 1em 2em;
+    --default-component-padding: 4.5em 2em 1em 2em;
     --container-shadow: 0px -1px 9px 0px rgba(0,0,0,0.75);
     --text-primary: #ffffff;
     --text-secondary: #282c34;
@@ -20,47 +20,62 @@ html, body {
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
     color: var(--secondary);
 }
-
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+// ::-webkit-scrollbar-thumb {
+//     background: #FF0000;
+// }
 /* UTILIY CLASSES */
-.primary-btn {
+.button-primary {
     background-color: var(--primary-button-bg);
     color: var(--text-primary);
     // box-shadow: var(--container-shadow);
     transition: all 0.3s ease-in-out;
     padding: 0.5em 1em;
     border-radius: 6px;
+    border: 0;
 }
 .form-control:focus,
-.primary-btn:focus {
+.button-primary:focus {
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+    box-shadow: none;
 }
-.primary-btn:not(:disabled):hover {
+.button-primary:focus,
+.button-primary:active,
+.button-primary:not(:disabled):hover {
     background-color: var(--secondary);
     font-weight: bold;
-
-    // color: var(--primary-button-bg);
+    color: var(--text-secondary);
 }
-.primary-btn:disabled {
+.button-primary:disabled {
     background-color: var(--secondary);
     color: var(--light-grey);
 }
-.primary-btn:disabled:hover {
+.button-primary:disabled:hover {
     cursor: not-allowed;
 }
-.outline-btn {
-    border-width: 2px;
+.button-outline {
+    box-shadow: none;
+    border: 2px solid var(--primary-button-bg);
+
 }
-.outline-btn:hover {
+.button-outline:focus,
+.button-outline:active,
+.button-outline:hover {
     color: var(--primary);
-    border-width: 2px;
-    border-color: var(--primary-button-bg);
+    border-color: var(--primary);
+
 }
-.primary-text {
+.text_primary {
     color: var(--secondary);
 }
 .container-shadow {
     box-shadow: var(--container-shadow);
+}
+.icon {
+    margin-right: 10px;
 }
 /* Animations */
 
@@ -68,3 +83,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
+@keyframes expand{
+    0%{height:0}
+    100%{height:100%}
+}
+@keyframes blacktowhite {
+    from { fill: var(--text-primary); }
+    to { fill: var(--primary-button-bg); }
+}
+// @media(max-width:768px) {
+//     .table th, .table td {
+//         padding: 0.50rem;
+//     }
+// }

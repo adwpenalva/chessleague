@@ -18,7 +18,6 @@ export default class LeagueTableRows extends Component {
     render() {
         return (
             <React.Fragment>
-          
             {this.props.showRaking &&
                 this.state.ranking &&
                    this.state.ranking
@@ -27,7 +26,7 @@ export default class LeagueTableRows extends Component {
                         return(
                             <tr key={index}>
                                 <th scope="col">{index + 1}</th>
-                                <td scope="col">{item.id}</td>
+                                <th scope="col">{item.id}</th>
                                 <td scope="col">{item.wins}</td>
                                 <td scope="col">{item.draws}</td>
                                 <td scope="col">{item.losses}</td>
@@ -49,7 +48,7 @@ export default class LeagueTableRows extends Component {
                                 {item.outcome ? 
                                     <td>{item.outcome}</td>
                                     :
-                                   <td><AddGameModal game={item} /></td>
+                                   <td><AddGameModal game={item} updateLeagueData={this.props.updateLeagueData} /></td>
                              
                                 }
                         </tr>

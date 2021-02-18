@@ -1,6 +1,6 @@
 
 .modal-title {
-    color: var(--primary-text)
+    color: var(--text_primary)
 }
 .overlay {
     position: fixed;
@@ -30,7 +30,7 @@
     transition: all 0.3s ease-in-out;
     
     h4,p {
-      color: var(--primary-text);
+      color: var(--text_primary);
     } 
     .error-message {
       color: red
@@ -48,7 +48,7 @@
 
 .success-container {
   p {
-    color: var(--primary-text);
+    color: var(--text_primary);
   }
   -webkit-animation: fadein 0.3s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 0.3s; /* Firefox < 16 */

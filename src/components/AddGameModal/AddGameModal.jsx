@@ -60,7 +60,7 @@ export default class AddGameModal extends Component {
                     if(gameFromUrlData.players.black.user.id !== selectedFixtureGame.black ||
                        gameFromUrlData.players.white.user.id !== selectedFixtureGame.white ) {
                            errorMessage = 
-                           `The game you are trying to add is not between ${selectedFixtureGame.white} and ${selectedFixtureGame.black}, please check the link you are submitting again, imbecil.`
+                           `The game you are trying to add is not between ${selectedFixtureGame.white}(white) and ${selectedFixtureGame.black}(black), please check the link you are submitting again, imbecil.`
                        }
                     let confirmationMessage = {
                         white: gameFromUrlData.players.white.user.id,
@@ -82,19 +82,20 @@ export default class AddGameModal extends Component {
     }
 
     handleSubmit = (e) => {
-        api.addNewGame({
-            fixture_id: this.props.game.id,
-            data: this.state.lichessGameData
-        }).then(result => {
+        api.addNewGame({fixture_id: this.props.game.id, data: this.state.lichessGameData})
+            .then(result => {
+                console.log("result on submit", result);
+                if(result.validation.correct_time_format && result.validation.new_game && result.validation.not_fulfilled && result.validation.valid_members && result.validation.within_deadline) {
+                    this.props.updateLeagueData(result)
                 this.setState({
-                ...this.state,
-                showSuccess: true,
-                showModal: false
-           })
-             setTimeout(() => {
-                this.closeSuccessMessage();
-           }, 3000);
-         
+                    ...this.state,
+                    showSuccess: true,
+                    showModal: false
+                })
+                setTimeout(() => {
+                    this.closeSuccessMessage();
+                }, 3000);
+                }
             })
     }
 
@@ -114,7 +115,7 @@ export default class AddGameModal extends Component {
     render() {
         return (
         <React.Fragment>
-            <button className="btn primary-btn outline-btn" value={this.props.game} onClick={e => this.openModal(e)}>Add Game</button>
+            <button className="btn button-primary button-outline button-sm" value={this.props.game} onClick={e => this.openModal(e)}>Add Game</button>
             {this.state.showModal &&
             <div className="overlay">
                 <div className="content">
@@ -131,7 +132,7 @@ export default class AddGameModal extends Component {
                          </div>}
                     {this.state.confirmationMessage ? 
                     <div>
-                        <p>Please confirm the game you are want the game you selected matches the information below</p>
+                        <p>Please confirm that the game you want to submit match the information below</p>
                         <p>White: {this.state.confirmationMessage.white}</p>
                         <p>Black: {this.state.confirmationMessage.black}</p>
                         <p>Result: {this.state.confirmationMessage.result}</p>
@@ -147,11 +148,14 @@ export default class AddGameModal extends Component {
                      />
                 }
                 <div className="modal-footer justify-content-between">
-                    <button className="btn primary-btn  outline-btn" onClick={e => this.closeModal(e)}>Close</button>
-                    {this.state.confirmationMessage ? 
-                    <button className="btn primary-btn outline-btn" onClick={e => this.handleSubmit(e)}>Submit Game</button>
+                    <button className="btn button-primary  button-outline" onClick={e => this.closeModal(e)}>Close</button>
+                    {this.state.errorMessage && this.state.confirmationMessage &&
+                    <button className="btn button-primary button-outline" onClick={e => this.handleSubmit(e)} disabled>Submit Game</button>
+                     }
+                    {!this.state.errorMessage && this.state.confirmationMessage ? 
+                    <button className="btn button-primary button-outline" onClick={e => this.handleSubmit(e)}>Submit Game</button>
                     :
-                    <button className="btn primary-btn outline-btn"
+                    !this.state.confirmationMessage && <button className="btn button-primary button-outline"
                      onClick={e => this.handleClick(e)}>Confirm</button>
                     }
                 </div>
