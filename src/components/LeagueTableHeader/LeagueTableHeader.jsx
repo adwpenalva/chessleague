@@ -4,9 +4,9 @@ export default function LeagueTableHeader(props) {
     return (
         <React.Fragment>
             {props.showRaking &&  
-                <tr>
-                  <th className="sticky-th" scope="col">#</th>
-                  <th className="sticky-th" scope="col">Name</th>
+                <tr className="sticky-items">
+                  <th className="sticky-th default-black-bg" scope="col">#</th>
+                  <th className="sticky-th default-black-bg" scope="col">Name</th>
                   <th scope="col">w</th>
                   <th scope="col">D</th>
                   <th scope="col">L</th>
@@ -16,11 +16,11 @@ export default function LeagueTableHeader(props) {
             }
             {props.showFixtures &&  
                 <tr>
-                  <th className="sticky-th" scope="col">#</th>
-                  <th scope="col">Whites</th>
-                  <th scope="col">Blacks</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Result</th>
+                  {/* <th scope="col">#</th> */}
+                  <th className="default-black-bg" scope="col">Whites</th>
+                  <th className="default-black-bg" scope="col">Blacks</th>
+                  <th className="default-black-bg" scope="col">Date</th>
+                  <th className="default-black-bg" scope="col">Result</th>
               </tr>
             }
   

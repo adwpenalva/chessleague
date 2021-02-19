@@ -84,7 +84,6 @@ export default class AddGameModal extends Component {
     handleSubmit = (e) => {
         api.addNewGame({fixture_id: this.props.game.id, data: this.state.lichessGameData})
             .then(result => {
-                console.log("result on submit", result);
                 if(result.validation.correct_time_format && result.validation.new_game && result.validation.not_fulfilled && result.validation.valid_members && result.validation.within_deadline) {
                     this.props.updateLeagueData(result)
                 this.setState({
@@ -115,7 +114,8 @@ export default class AddGameModal extends Component {
     render() {
         return (
         <React.Fragment>
-            <button className="btn button-primary button-outline button-sm" value={this.props.game} onClick={e => this.openModal(e)}>Add Game</button>
+            <button className="btn button-primary button-outline button-sm" value={this.props.game} 
+            onClick={e => this.openModal(e)}>+ Game</button>
             {this.state.showModal &&
             <div className="overlay">
                 <div className="content">

@@ -33,7 +33,6 @@ const service = axios.create({
   },
 
   addNewGame(data) {
-    console.log("data on service", data)
     return service
       .post("/game", data)
       .then(res => res.data)

@@ -18,7 +18,6 @@ export default class Login extends Component {
     };
 
     render() {
-        console.log("clientId", clientId)
         return (
             <div>
             {clientId && 

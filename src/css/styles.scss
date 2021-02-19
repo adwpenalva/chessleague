@@ -1,24 +1,32 @@
 :root {
+    /* BLACK */
     --primary: #282c34;
+    --text-secondary: #282c34;
+    --primary-bg: rgb(20, 20, 20);
+    /* WHITE */
     --secondary: #ffffff;
-    --primary-gray: #d0d0d0;
+    --text-primary: #ffffff;
+    --secondary-bg: #ffffff;
+    /* OTHERS */
+    --primary-gray: #272727;
     --light-grey: #9b9b9b;
     --mid-grey: #7b7b7b;
     --dark-grey: #5b5b5b;
     --default-component-padding: 4.5em 2em 1em 2em;
     --container-shadow: 0px -1px 9px 0px rgba(0,0,0,0.75);
-    --text-primary: #ffffff;
-    --text-secondary: #282c34;
-    --primary-button-bg: rgb(20, 20, 20)
+    --dark-background: linear-gradient(0deg, rgba(13,11,11,1) 20%, rgba(0,0,0,0.9110994739692753) 45%, rgba(13,12,12,0.8158613787311799) 80%);
+    --light-background: linear-gradient(0deg, rgba(68,66,66,1) 14%, rgba(147,139,139,0.9110994739692753) 37%, rgba(255,251,251,0.8158613787311799) 80%);
+    --main-background: var(--dark-background);
 }
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 /* DEFAULT RESETS */
 html, body {
-    font-family: 'Roboto', sans-serif;
+   font-family: 'Roboto Mono', monospace;
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
-    color: var(--secondary);
+    color: var(--text-primary);
 }
 ::-webkit-scrollbar {
     width: 0;  /* Remove scrollbar space */
@@ -27,9 +35,26 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
 // ::-webkit-scrollbar-thumb {
 //     background: #FF0000;
 // }
-/* UTILIY CLASSES */
+
+/* ******************************************/
+/* **********  UTILIY CLASSES ***************/
+/* *****************************************/
+.text_primary {
+    color: var(--text-primary);
+}
+.container-shadow {
+    box-shadow: var(--container-shadow);
+}
+.icon {
+    margin-right: 10px;
+}
+
+
+/* ******************************* */
+/* ********** BUTTONS ************ */
+/* ******************************* */
 .button-primary {
-    background-color: var(--primary-button-bg);
+    background-color: var(--primary-bg);
     color: var(--text-primary);
     // box-shadow: var(--container-shadow);
     transition: all 0.3s ease-in-out;
@@ -42,10 +67,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
     outline: 0;
     box-shadow: none;
 }
+.button-primary_active,
 .button-primary:focus,
 .button-primary:active,
 .button-primary:not(:disabled):hover {
-    background-color: var(--secondary);
+    background-color: var(--secondary-bg);
     font-weight: bold;
     color: var(--text-secondary);
 }
@@ -58,8 +84,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
 }
 .button-outline {
     box-shadow: none;
-    border: 2px solid var(--primary-button-bg);
-
+    border: 2px solid var(--primary-bg);
 }
 .button-outline:focus,
 .button-outline:active,
@@ -68,16 +93,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
     border-color: var(--primary);
 
 }
-.text_primary {
-    color: var(--secondary);
-}
-.container-shadow {
-    box-shadow: var(--container-shadow);
-}
-.icon {
-    margin-right: 10px;
-}
-/* Animations */
+
+
+/* ************************************/
+/* ********** ANIMATIONS **************/
+/* ************************************/
 
 @keyframes fadein {
     from { opacity: 0; }
@@ -89,10 +109,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
 }
 @keyframes blacktowhite {
     from { fill: var(--text-primary); }
-    to { fill: var(--primary-button-bg); }
+    to { fill: var(--primary-bg); }
 }
-// @media(max-width:768px) {
-//     .table th, .table td {
-//         padding: 0.50rem;
-//     }
-// }
+@media(max-width:768px) {
+    .button-sm {
+        padding: 6px;
+        min-width:20vw
+    }
+}

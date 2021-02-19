@@ -15,7 +15,6 @@ export default class League extends Component {
 
 
     render() {
-        console.log("this.props.leagueData", this.props.leagueData)
         return (
             <div className="League">
                 <h2 className="league_title text_primary">

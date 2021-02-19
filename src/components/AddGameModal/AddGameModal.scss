@@ -18,7 +18,7 @@
 
   .content {
     margin: 10% auto;
-    background-color: white;
+    background-color: var(--primary);
     border-radius: 0.25rem;
     display: flex;
     justify-content: space-between;
@@ -30,7 +30,7 @@
     transition: all 0.3s ease-in-out;
     
     h4,p {
-      color: var(--text_primary);
+      color: var(--text-primary);
     } 
     .error-message {
       color: red
@@ -48,7 +48,7 @@
 
 .success-container {
   p {
-    color: var(--text_primary);
+    color: var(--text-primary);
   }
   -webkit-animation: fadein 0.3s; /* Safari, Chrome and Opera > 12.1 */
        -moz-animation: fadein 0.3s; /* Firefox < 16 */

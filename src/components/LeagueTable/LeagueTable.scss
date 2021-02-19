@@ -1,8 +1,8 @@
 
 .LeagueTable {
-
+        min-height: 45vh;
     .table {
-        background-color:  var(--secondary);
+        background-color: var(--primary-bg);
         // background-color: #667788;
         border-radius: 3px;
         min-width: 60vw;
@@ -19,8 +19,8 @@
         box-shadow: 2px 8px 5px -4px rgba(0,0,0,0.26);
     }
 
-    thead th:nth-child(1),
-    tbody th:nth-child(1) {
+    // thead th:nth-child(1),
+    .sticky-items th:nth-child(1) {
         position: -webkit-sticky; /* for Safari */
         position: sticky;
         left: 0;
@@ -43,26 +43,29 @@
     .table thead th {
         position: sticky;
         top: 0;
-        background-color: var(--secondary);
-        border-bottom: 1px solid rgb(0 0 0 / 8%);
+        background-color: var(--primary-bg);
+        border-bottom: 1px solid rprigb(0 0 0 / 8%);
     }
     .table th, .table td {
         border: 0
     }
     .table thead {
-      color: var(--primary);
+      color: var(--text-primary);
       font-weight: bold;  
       text-transform: uppercase;
     }
-    .table tr:nth-child(even) > th:nth-child(1),
-    .table tr:nth-child(even) > th:nth-child(2),
-    .table tr:nth-child(even) {
-        background-color: var(--primary-gray);
+    .table tbody {
+      color: var(--text-primary);
     }
     .table tr:nth-child(odd) > th:nth-child(1),
     .table tr:nth-child(odd) > th:nth-child(2),
     .table tr:nth-child(odd) {
-        background-color: var(--secondary);
+        background-color: var(--primary-gray);
+    }
+    .table tr:nth-child(even) > th:nth-child(1),
+    .table tr:nth-child(even) > th:nth-child(2),
+    .table tr:nth-child(even) {
+        background-color: var(--primary-bg);
     }
     
     .table th, .table td {
@@ -72,10 +75,15 @@
     .tab_container button {
         flex-grow: 1;
         border-radius: 5px 5px 0 0;
+        max-width: 50%;
+        border-radius: 0;
     }
     .table_wrapper {
         overflow: scroll;
         max-width: 80vw;
         max-height: 70vh;
+    }
+    .default-black-bg {
+        background-color: var(--primary-bg) !important;
     }
 }

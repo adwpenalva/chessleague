@@ -5,7 +5,6 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home'
 import League from './components/League/League'
 import Profile from './components/Profile/Profile'
-// import Placeholder from './components/Placeholder/Placeholder'
 
 export default class App extends Component {
   constructor(props) {
@@ -18,7 +17,6 @@ export default class App extends Component {
   };
 
   sendUserInfoFromProfile = (userData) => {
-    console.log("userData", userData)
     this.setState({
             ...this.state,
             userData: userData
@@ -26,7 +24,6 @@ export default class App extends Component {
   }
 
   updateLeagueData = (data) => {
-    console.log("data on APP", data)
         this.setState({
             ...this.state,
         leagueData: data

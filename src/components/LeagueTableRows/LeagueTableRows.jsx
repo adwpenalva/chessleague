@@ -6,8 +6,6 @@ export default class LeagueTableRows extends Component {
         super(props);
         this.state = {
             showModal:  false,
-            ranking:    props.ranking,
-            fixtures:   props.fixtures
         };
       };   
     openModal = (e) =>    {
@@ -16,15 +14,16 @@ export default class LeagueTableRows extends Component {
         })
     }
     render() {
+        console.log("this.state.fixtures" , this.props.fixtures)
         return (
             <React.Fragment>
             {this.props.showRaking &&
-                this.state.ranking &&
-                   this.state.ranking
+                this.props.ranking &&
+                   this.props.ranking
                    .sort((a,b) => b.aelo - a.aelo)
                    .map((item, index) => { 
                         return(
-                            <tr key={index}>
+                            <tr className="sticky-items" key={index}>
                                 <th scope="col">{index + 1}</th>
                                 <th scope="col">{item.id}</th>
                                 <td scope="col">{item.wins}</td>
@@ -37,16 +36,16 @@ export default class LeagueTableRows extends Component {
                     })
             }
             {this.props.showFixtures && 
-                this.state.fixtures &&
-                this.state.fixtures.map((item, index) => {
+                this.props.fixtures &&
+                this.props.fixtures.map((item, index) => {
                     return(
                         <tr className="rows" key={item.id}>
-                            <th scope="row" >{index + 1}</th>
+                            {/* <th scope="row" >{index + 1}</th> */}
                             <td>{item.white}</td>
                             <td>{item.black}</td>
                             <td>{new Date(item.deadline).getDate() + "/" + new Date(item.deadline).toLocaleString('default', { month: 'long' })}</td>
                                 {item.outcome ? 
-                                    <td>{item.outcome}</td>
+                                    <td>{item.winner_name}</td>
                                     :
                                    <td><AddGameModal game={item} updateLeagueData={this.props.updateLeagueData} /></td>
                              
