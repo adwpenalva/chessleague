@@ -66,6 +66,7 @@
   background-color: var(--primary-bg);
   -webkit-transition: .4s;
   transition: .4s;
+  border: 1px solid var(--secondary)
 }
 
 .slider:before {

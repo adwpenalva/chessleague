@@ -17,13 +17,26 @@
     --dark-background: linear-gradient(0deg, rgba(13,11,11,1) 20%, rgba(0,0,0,0.9110994739692753) 45%, rgba(13,12,12,0.8158613787311799) 80%);
     --light-background: linear-gradient(0deg, rgba(68,66,66,1) 14%, rgba(147,139,139,0.9110994739692753) 37%, rgba(255,251,251,0.8158613787311799) 80%);
     --main-background: var(--dark-background);
+    /* FONTS */
+    --font-fixed: "Fixedsys Excelsior 3.01";
+    --font-default: 'Roboto Mono';
 }
 // @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url('//db.onlinewebfonts.com/c/13c63232af298878387142e0da62c96f?family=Fixedsys+Excelsior+3.01');
+@font-face {
+    font-family: "Fixedsys Excelsior 3.01"; 
+    src: url("//db.onlinewebfonts.com/t/13c63232af298878387142e0da62c96f.eot");
+    src: url("//db.onlinewebfonts.com/t/13c63232af298878387142e0da62c96f.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/13c63232af298878387142e0da62c96f.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/13c63232af298878387142e0da62c96f.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/13c63232af298878387142e0da62c96f.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/13c63232af298878387142e0da62c96f.svg#Fixedsys Excelsior 3.01") format("svg"); 
+}
 
 /* DEFAULT RESETS */
 html, body {
-   font-family: 'Roboto Mono', monospace;
+   font-family:  var(--font-default), monospace;
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
     color: var(--text-primary);
@@ -56,7 +69,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, p, a, span {
 .button-primary {
     background-color: var(--primary-bg);
     color: var(--text-primary);
-    // box-shadow: var(--container-shadow);
+    font-family: var(--font-fixed);
     transition: all 0.3s ease-in-out;
     padding: 0.5em 1em;
     border-radius: 6px;

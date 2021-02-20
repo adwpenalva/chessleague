@@ -89,7 +89,7 @@ export default class Navbar extends Component {
                       <Link to="/league" className="nav-link">League</Link>
                   </li>
                 </ul>
-                <div className="d-flex text_primary align-items-center">
+                <div className="d-flex text_primary align-items-center ml-3">
                {this.state.lightMode ? "Light" : "Dark"}
                 <label className="switch">
                   <input type="checkbox"  onClick={e => this.toggleLightMode(e)} />
