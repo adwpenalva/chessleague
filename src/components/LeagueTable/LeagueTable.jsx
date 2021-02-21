@@ -36,8 +36,8 @@ export default class LeagueTable extends Component {
                     ranking:    result[0],
                     fixtures:   result[1],
                 })
-
                 this.fixtureSelection(1)
+                this.getfixtureCount();
             })
             .catch(error => {
                 console.error(error)
@@ -57,7 +57,18 @@ export default class LeagueTable extends Component {
             rankingActive: false,
             fixtureActive: true,
           });
+
     };
+    getfixtureCount = () => {
+        let fixtureCount = this.props.leagueData.fixtures.map(item => item.round_id);
+        console.log("fixtureCount",fixtureCount)
+        fixtureCount = [...new Set(fixtureCount)];
+        console.log("fixtureCount after set",fixtureCount);
+        this.setState({
+            ...this.state,
+            fixtureCount: fixtureCount,
+          });
+    } 
 
     handleRoundSelection = (e) => {
         const activeRoundNumber = e.target.value;
@@ -71,7 +82,7 @@ export default class LeagueTable extends Component {
             selectedFixture: selectedFixture
         });
     };
-   
+    
       
     render() {
         return (
@@ -87,18 +98,16 @@ export default class LeagueTable extends Component {
 
 
                 </div>
+                <div className="d-flex justify-content-around w-100 tab_container">
                     {this.state.fixtureActive &&
-                    <div className="d-flex justify-content-around w-100 tab_container">
-                        <button className="btn button-primary" value="1" onClick={(e) => this.handleRoundSelection(e)}>
-                            <FontAwesomeIcon icon={faChessPawn} className="icon" />Round One
-                        </button>
-                        
-                        <button className="btn button-primary" value="2" onClick={(e) => this.handleRoundSelection(e)}>
-                            <FontAwesomeIcon icon={faChessPawn}  className="icon"/>Round Two
-                        </button>
-
-                    </div>
+                        this.state.fixtureCount.map((item,index) => (
+                            <button className="btn button-primary" key={index + 10} value={item} onClick={(e) => this.handleRoundSelection(e)}>
+                                <FontAwesomeIcon icon={faChessPawn} className="icon" />
+                                Round {item}
+                            </button>
+                        ))
                     }
+                    </div>
                 <div className="table_wrapper">
                 <table className="table">
                   <thead>

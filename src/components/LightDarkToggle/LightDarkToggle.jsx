@@ -43,7 +43,7 @@ export default class LightDarkToggle extends Component {
                 primary_bg: "#ffffff",
                 secondary_bg: "rgb(20, 20, 20)",
                 primary_gray: "#dcd9d9",
-                main_background: "linear-gradient(0deg, rgba(68,66,66,1) 14%, rgba(147,139,139,0.9110994739692753) 37%, rgba(255,251,251,0.8158613787311799) 80%)",
+                main_background: " linear-gradient(0deg, rgba(68,66,66,1) 0%, rgba(147,139,139,0.9110994739692753) 37%, rgba(255,251,251,0.8158613787311799) 80%)",
     
                 }
             }, () => {

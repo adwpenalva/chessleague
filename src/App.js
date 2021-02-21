@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home'
 import League from './components/League/League'
 import Profile from './components/Profile/Profile'
+import api from "./services/api";
 
 export default class App extends Component {
   constructor(props) {
@@ -29,7 +30,18 @@ export default class App extends Component {
         leagueData: data
         })
     };
-
+    componentDidMount() {
+        Promise.all([api.getLeagueRanking(), api.getLeagueFixtures()])
+          .then(result => {
+              this.updateLeagueData({
+                  ranking:    result[0],
+                  fixtures:   result[1],
+              })
+          })
+          .catch(error => {
+              console.error(error)
+          })
+    }
 
   render() {
     return (
@@ -44,8 +56,9 @@ export default class App extends Component {
             user={this.state.userData}/>} />
           <Route path="/profile" render={(props) => 
           <Profile {...props}  
-          user={this.state.userData} 
-          updateUserData={this.sendUserInfoFromProfile}/>}/>
+            user={this.state.userData} 
+            leagueData={this.state.leagueData} 
+            updateUserData={this.sendUserInfoFromProfile}/>}/>
           <Route render={() => <h2>404</h2>} />
         </Switch>
       </div>
