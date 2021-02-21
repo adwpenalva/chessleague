@@ -14,7 +14,6 @@ export default class LeagueTableRows extends Component {
         })
     }
     render() {
-        console.log("this.state.fixtures" , this.props.fixtures)
         return (
             <React.Fragment>
             {this.props.showRaking &&

@@ -65,7 +65,6 @@ export default class LeagueTable extends Component {
     };
 
     fixtureSelection = (roundNumber) => {
-        console.log("roundNumber", Number(roundNumber))
         let selectedFixture =[...this.props.leagueData.fixtures].filter(item => item.round_id === Number(roundNumber));
         this.setState({
             ...this.state,
@@ -75,8 +74,6 @@ export default class LeagueTable extends Component {
    
       
     render() {
-        console.log("rankingActive", this.state.rankingActive);
-        console.log("fixtureActive", this.state.fixtureActive);
         return (
             <div className="LeagueTable">
                 <div className="d-flex justify-content-around w-100 tab_container">
