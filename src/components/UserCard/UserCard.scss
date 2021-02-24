@@ -1,0 +1,17 @@
+.UserCard {
+    position: relative;
+    cursor: pointer;
+    .user_card {
+        position: absolute;
+        top: 0;
+        left: 100px;
+        background-color: var(--primary);
+        border-radius: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 2rem 2rem 1rem;
+        box-shadow: var(--container-shadow);
+        z-index: 10000;
+        width: 30vw;
+    }
+}

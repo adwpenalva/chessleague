@@ -55,14 +55,13 @@
         -ms-animation: fadein 0.3s; /* Internet Explorer */
          -o-animation: fadein 0.3s; /* Opera < 12.1 */
             animation: fadein 0.3s;
-      margin: 10% auto;
-    background-color: #CFEFE0;
+    margin: 10% auto;
+    background-color: var(--primary);
     border-radius: 0.25rem;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     width: 30vw;
-    
     padding: 2rem;
     position: relative;
     transition: all 0.3s ease-in-out;

@@ -15,14 +15,14 @@ export default class ActivityTracker extends Component {
             .filter(item => item.black === "mrunseen" || item.white === "mrunseen")
             .filter(item => item.winner_name)
             .map(item => {
-                if(item.winner_name === "mrunseen") return "W"
-                else if(item.winner_name === "draw") return "D"
-                else return "L"
+                if(item.winner_name === "mrunseen") return "W";
+                else if(item.winner_name === "draw") return "D";
+                else return "L";
             })
             this.setState({
                 leagueData: this.props.leagueData,
                 trackRecord: lastGamesResult
-            },() => console.log(this.state))
+            })
 
     }
     componentDidMount() {

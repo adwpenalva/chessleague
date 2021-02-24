@@ -61,9 +61,7 @@ export default class LeagueTable extends Component {
     };
     getfixtureCount = () => {
         let fixtureCount = this.props.leagueData.fixtures.map(item => item.round_id);
-        console.log("fixtureCount",fixtureCount)
         fixtureCount = [...new Set(fixtureCount)];
-        console.log("fixtureCount after set",fixtureCount);
         this.setState({
             ...this.state,
             fixtureCount: fixtureCount,
@@ -120,6 +118,7 @@ export default class LeagueTable extends Component {
                       {this.props.leagueData && 
                         <LeagueTableRows 
                         openModal={this.openModal}
+                        leagueData={this.props.leagueData}
                         ranking={this.props.leagueData.ranking}
                         fixtures={this.state.selectedFixture}
                         showRaking={this.state.rankingActive}
