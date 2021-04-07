@@ -25,6 +25,14 @@ const service = axios.create({
       service: service,
   // This is an example on how to use this method in a different file
   // api.getCountries().then(countries => { /* ... */ })
+  
+  loginGoogleUser(data) {
+    return service
+      .post("/login", {"gtoken": data})
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+
   getLeageData() {
     return service
       .get("/league")

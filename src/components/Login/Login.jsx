@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
+import api from "../../services/api";
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -11,6 +12,8 @@ export default class Login extends Component {
     onSuccess = (res) => {
         this.props.updateUserData(res)
         console.log('[Login Success] currentUser:', res.profileObj);
+        console.log('[Login Success] TokenID:', res.tokenId);
+        api.loginGoogleUser(res.tokenId);
     };
 
     onFailure = (res) => {
