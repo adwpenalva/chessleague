@@ -29,7 +29,14 @@ const service = axios.create({
   loginGoogleUser(data) {
     return service
       .post("/login", {"gtoken": data})
-      .then(res => res.data)
+      .then(res => {console.log(res.data)})
+      .catch(errHandler)
+  },
+
+  logoutGoogleUser() {
+    return service
+      .post("/logout")
+      .then(res => {console.log(res.data)})
       .catch(errHandler)
   },
 
